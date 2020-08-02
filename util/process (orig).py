@@ -104,7 +104,5 @@ def read_wb_ccm(raw):
     wb = np.array(raw.camera_whitebalance) 
     wb /= wb[1]
     wb = wb.astype(np.float32)
-    # zmf: rawpy version problem?
-    # ccm = raw.rgb_camera_matrix[:3, :3].astype(np.float32)
-    ccm = raw.rgb_xyz_matrix[:3, :3].astype(np.float32)
+    ccm = raw.rgb_camera_matrix[:3, :3].astype(np.float32)
     return wb, ccm

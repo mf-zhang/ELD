@@ -29,9 +29,9 @@ if opt.debug:
 expo_ratio = [100, 250, 300]
 
 if socket.gethostname() == 'HP':
-    datadir = '/media/kaixuan/DATA/Papers/Code/Data/Raw/SID/Sony'
+    datadir = '../../data/dataset/SID/Sony/Sony/'
 else:
-    datadir = '/data/weikaixuan/dark/data/Sony'
+    datadir = '../../data/dataset/SID/Sony/Sony/'
 
 
 read_expo_ratio = lambda x: float(x.split('_')[-1][:-5])
@@ -69,4 +69,4 @@ for ratio, dataloader in zip(expo_ratio, eval_dataloaders):
     # since we observe some fixed pattern noise appeared at the bottom corner of some pictures.
     # We don't find such noise pattern in our ELD dataset (SonyA7S2 set), which uses the same camera model as SID dataset.
     # As a result, we conjecture this fixed noise pattern might be caused by lens damage, which should be excluded in evaluation.
-    engine.eval(dataloader, dataset_name='sid_eval_{}'.format(ratio), correct=True, crop=True)
+    engine.eval(dataloader, dataset_name='sid_eval_{}'.format(ratio), savedir='../../workplace/eld_test', correct=True, crop=True)
